@@ -1,0 +1,35 @@
+services:
+  cl1:
+    image: nw-base
+    build: 
+      context: .
+    container_name: cl1
+    tty: true
+    networks:
+      lan1:
+        ipv4_address: 192.168.1.2
+  cl2:
+    image: nw-base
+    build: 
+      context: .
+    container_name: cl2
+    tty: true
+    networks:
+      lan1:
+        ipv4_address: 192.168.1.3
+  rt1:
+    image: nw-base
+    build: 
+      context: .
+    container_name: rt1
+    tty: true
+    networks:
+      lan1:
+        ipv4_address: 192.168.1.10
+
+networks:
+  lan1:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 192.168.1.0/24
